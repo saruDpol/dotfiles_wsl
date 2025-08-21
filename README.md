@@ -62,6 +62,7 @@ sudo apt install -y curl wget git unzip build-essential
 - GitHub CLI
 - tmux
 - Python (python3, pip, venv, pynvim)
+- UV
 - Node.js + npm
 - Yarn
 - React Native CLI
@@ -99,6 +100,10 @@ curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | 
 # Python Neovim support
 pip3 install --user pynvim
 
+# Install uv (Python package & project manager)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.zshrc
+
 # Install Node.js via nvm (Node Version Manager)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
@@ -120,13 +125,13 @@ npm install --global react-native-cli
 
 ```bash
 cd ~
-git clone https://github.com/saruDpol/dotfiles
+git clone https://github.com/saruDpol/dotfiles_wsl
 ```
 
 Move WezTerm config to Windows home:
 
 ```bash
-cp ~/dotfiles/.wezterm.lua /mnt/c/Users/<YourUser>/.wezterm.lua
+cp ~/dotfiles_wsl/dotfiles/.wezterm.lua /mnt/c/Users/<YourUser>/.wezterm.lua
 ```
 
 ---
@@ -134,14 +139,14 @@ cp ~/dotfiles/.wezterm.lua /mnt/c/Users/<YourUser>/.wezterm.lua
 ## 6. Link Config Files in Ubuntu
 
 ```bash
-mv ~/dotfiles/.zshrc ~/.zshrc
-mv ~/dotfiles/.bashrc ~/.bashrc
-mv ~/dotfiles/.bash_profile ~/.bash_profile
-mv ~/dotfiles/starship.toml ~/.config/starship.toml
-mv ~/dotfiles/nvim ~/.config/
-mv ~/dotfiles/eza ~/.config/
-mv ~/dotfiles/eza ~/.config/
-rm -rf dotfiles
+mv ~/dotfiles_wsl/dotfiles/.zshrc ~/.zshrc
+mv ~/dotfiles_wsl/dotfiles/.bashrc ~/.bashrc
+mv ~/dotfiles_wsl/dotfiles/.bash_profile ~/.bash_profile
+mv ~/dotfiles_wsl/starship.toml ~/.config/starship.toml
+mv ~/dotfiles_wsl/nvim ~/.config/
+mv ~/dotfiles_wsl/eza ~/.config/
+mv ~/dotfiles_wsl/eza ~/.config/
+rm -rf dotfiles_wsl
 ```
 
 ---
