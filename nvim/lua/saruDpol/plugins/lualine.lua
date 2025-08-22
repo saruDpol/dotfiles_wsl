@@ -2,6 +2,7 @@ local colors = {
 	black = "#383a42",
 	white = "#e5e5e5",
 	orange = "#f8520e",
+	red = "#d0140e",
 	green = "#859901",
 	blue = "#124f5e",
 	purple = "#6c71c4",
@@ -19,10 +20,10 @@ return { -- Statusline
 			--theme = "solarized_dark",
 			theme = {
 				normal = {
-					a = { fg = colors.white, bg = colors.orange, gui = "bold" },
+					a = { fg = colors.white, bg = colors.red, gui = "bold" },
 					b = { fg = colors.white, bg = colors.grey },
 					c = { fg = colors.white, bg = colors.blue },
-					z = { fg = colors.white, bg = colors.orange, gui = "bold" },
+					z = { fg = colors.white, bg = colors.red, gui = "bold" },
 				},
 				insert = {
 					a = { fg = colors.white, bg = colors.green, gui = "bold" },
@@ -37,8 +38,8 @@ return { -- Statusline
 					z = { fg = colors.white, bg = colors.purple, gui = "bold" },
 				},
 				command = {
-					a = { fg = colors.darkgold, bg = colors.gold, gui = "bold" },
-					z = { fg = colors.darkgold, bg = colors.gold, gui = "bold" },
+					a = { fg = colors.darkblue, bg = colors.gold, gui = "bold" },
+					z = { fg = colors.darkblue, bg = colors.gold, gui = "bold" },
 				},
 			},
 			component_separators = { left = "|", right = "|" },
@@ -63,7 +64,7 @@ return { -- Statusline
 				{
 					"filename",
 					separator = { left = "░▒▓", right = "" },
-					color = { fg = "#e5e5e5", bg = "#012b36" },
+					color = { fg = "#d6a04a", bg = "#012b36" },
 				},
 				{
 					"diagnostics",
@@ -87,7 +88,7 @@ return { -- Statusline
 				{
 					"progress",
 					separator = { right = "▓▒░" },
-					color = { bg = colors.darkblue },
+					color = { fg = "#d6a04a", bg = colors.darkblue },
 				},
 			},
 			lualine_z = {

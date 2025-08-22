@@ -35,18 +35,17 @@ $time\
 # [ ](fg:#012b38)\
 [character]
 format = "$symbol "
-success_symbol = "[◎](#fdce3c)"
+# success_symbol = "[◎](#fdce3c)"
+success_symbol = "[◎](#d0140e)"
 error_symbol = "[○](italic purple)"
 vimcmd_symbol = "[■](italic dimmed green)"
 
 [username]
 show_always = true
-# style_user = "bg:#001d24"
-# style_root = "bg:#001d24"
-#style_user = "bold fg:#e5e5e5 bg:#cb4a15"
-#style_root = "bold fg:#e5e5e5 bg:#cb4a15"
-format = '[$user ]($style)'
-disabled = false
+# style_user = "fg:#d0140e"
+# style_root = "fg:#ffffff bg:#000000"
+format = "[$user ]($style)"
+#disabled = false
 
 # An alternative to the username module which displays a symbol that
 # represents the current operating system
