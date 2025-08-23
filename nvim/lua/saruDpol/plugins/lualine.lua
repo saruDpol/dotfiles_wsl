@@ -7,6 +7,7 @@ local colors = {
 	blue = "#124f5e",
 	purple = "#6c71c4",
 	gold = "#ffc102",
+	lightgold = "#d6a04a",
 	darkblue = "#012b36",
 	pink = "#f255a1",
 	darkgold = "#332700",
@@ -51,7 +52,7 @@ return { -- Statusline
 			ignore_focus = {},
 			always_divide_middle = true,
 			always_show_tabline = true,
-			globalstatus = false,
+			globalstatus = true,
 			refresh = {
 				statusline = 100,
 				tabline = 100,
