@@ -62,10 +62,9 @@ alias cd="z"
 # Android Studio
 # ───────────────────────────────
 export ANDROID_HOME=/mnt/c/Users/ptorn/AppData/Local/Android/Sdk
-export PATH=$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH
 
-alias adb='adb.exe'
-alias emulator='emulator.exe'
+alias adb="/mnt/c/Users/ptorn/AppData/Local/Android/Sdk/platform-tools/adb.exe"
+alias emulator="/mnt/c/Users/ptorn/AppData/Local/Android/Sdk/emulator/emulator.exe"
 
 # ───────────────────────────────
 # nvm (Node Version Manager)
