@@ -59,9 +59,25 @@ eval "$(zoxide init zsh)"
 alias cd="z"
 
 # ───────────────────────────────
+# Android Studio
+# ───────────────────────────────
+export ANDROID_HOME=/mnt/c/Users/ptorn/AppData/Local/Android/Sdk
+export PATH=$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH
+
+alias adb='adb.exe'
+alias emulator='emulator.exe'
+
+# ───────────────────────────────
 # nvm (Node Version Manager)
 # ───────────────────────────────
+if [ -n "$ZSH_VERSION" ]; then
+  if ! command -v hash >/dev/null 2>&1; then
+    hash() { true; }
+  fi
+fi
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
+export PATH="$HOME/.cargo/bin:$PATH"
