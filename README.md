@@ -44,8 +44,10 @@ wsl --install -d Ubuntu
 ## 3. Open Windows Ubuntu Terminal and Update
 
 ```bash
+
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y curl wget git unzip build-essential
+sudo apt install -y curl unzip wget git ripgrep fd-find tmux build-essential libssl-dev libffi-dev
+
 ```
 
 ---
@@ -79,42 +81,76 @@ sudo apt install -y curl wget git unzip build-essential
 To go blazingly fast...
 
 ```bash
-# Update & upgrade
-sudo apt update && sudo apt upgrade -y
 
-# Install essentials
-sudo apt install -y zsh curl wget git neovim ripgrep fd-find tmux python3 python3-pip python3-venv build-essential libssl-dev libffi-dev
+# -------------------------------
+# 1️⃣ Oh My Zsh & Plugins
+# -------------------------------
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 # Switch default shell to Zsh
 chsh -s $(which zsh)
 
-# Install Oh My Zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# -------------------------------
+# 2️⃣ eza
+# -------------------------------
+sudo mkdir -p /etc/apt/keyrings
+wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
+echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
+sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
+sudo apt update
+sudo apt install -y eza
 
-# Install Starship Prompt
+# -------------------------------
+# 3️⃣ Latest Neovim from GitHub
+# -------------------------------
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+sudo rm -rf /opt/nvim
+sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+sudo mv /opt/nvim-linux-x86_64 /opt/nvim
+
+# Add Neovim to PATH
+echo 'export PATH="/opt/nvim/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+
+# -------------------------------
+# 4️⃣ Starship Prompt
+# -------------------------------
 curl -fsSL https://starship.rs/install.sh | bash
 
-# Install Zoxide
+# -------------------------------
+# 5️⃣ Zoxide
+# -------------------------------
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
 
-# Python Neovim support
-pip3 install --user pynvim
+# -------------------------------
+# 6️⃣ Python & pynvim (system)
+# -------------------------------
+# Make sure system Python3 is installed
+sudo apt update
+sudo apt install -y python3 python3-pip python3-venv python3-pynvim build-essential libssl-dev libffi-dev
 
-# Install uv (Python package & project manager)
+# -------------------------------
+# 7️⃣ uv (Python version manager)
+# -------------------------------
 curl -LsSf https://astral.sh/uv/install.sh | sh
 echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
 
-# Install Node.js via nvm (Node Version Manager)
+# -------------------------------
+# 8️⃣ Node.js via NVM
+# -------------------------------
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 nvm install --lts
 nvm use --lts
 
-# Install Yarn
+# -------------------------------
+# 9️⃣ Yarn & React Native CLI
+# -------------------------------
 npm install --global yarn
-
-# Install React Native CLI
 npm install --global react-native-cli
 
 ```
@@ -144,7 +180,6 @@ mv ~/dotfiles_wsl/dotfiles/.bashrc ~/.bashrc
 mv ~/dotfiles_wsl/dotfiles/.bash_profile ~/.bash_profile
 mv ~/dotfiles_wsl/starship.toml ~/.config/starship.toml
 mv ~/dotfiles_wsl/nvim ~/.config/
-mv ~/dotfiles_wsl/eza ~/.config/
 mv ~/dotfiles_wsl/eza ~/.config/
 rm -rf dotfiles_wsl
 ```

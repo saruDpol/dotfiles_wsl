@@ -14,7 +14,10 @@ keymap.set("n", "dw", "vb_d")
 -- Select all
 keymap.set("n", "<C-a>", "gg<S-v>G")
 
--- Jumplist
+-- Jump back (older location)
+keymap.set("n", "<C-n>", "<C-o>", opts)
+
+-- Jump forward (newer location)
 keymap.set("n", "<C-m>", "<C-i>", opts)
 
 -- New tab
@@ -55,9 +58,6 @@ keymap.set("n", "<M-Right>", ":vertical resize +2<CR>")
 keymap.set("n", "<M-Down>", ":resize +2<CR>")
 keymap.set("n", "<M-Up>", ":resize -2<CR>")
 
--- Diagnostics
-vim.keymap.set("n", "<C-j>", vim.diagnostic.goto_next, { noremap = true, silent = true })
-
 -- Explorer
 keymap.set("n", "<leader><leader>", vim.cmd.Ex)
 
@@ -79,3 +79,21 @@ keymap.set("v", "p", '"_dP', opts) -- Replace without copying
 
 -- visual block remap
 vim.keymap.set("n", "<leader>v", "<C-q>", { noremap = true, silent = true })
+
+-- Diagnostics
+vim.keymap.set("n", "<C-j>", vim.diagnostic.goto_next, { noremap = true, silent = true })
+
+-- Telescope lazy keymaps for LSP
+keymap.set("n", "<C-k>", function()
+	require("telescope.builtin").lsp_definitions({
+		layout_strategy = "vertical",
+		layout_config = { preview_height = 0.6 },
+	})
+end, { desc = "Go to Definition (Telescope)" })
+
+keymap.set("n", "<leader>gr", function()
+	require("telescope.builtin").lsp_references({})
+end, { desc = "Find References (Telescope)" })
+
+-- Hover info
+keymap.set("n", "<C-h>", vim.lsp.buf.hover, { desc = "Show Hover Info" })

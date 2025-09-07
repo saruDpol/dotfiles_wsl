@@ -5,6 +5,12 @@ export TERM="xterm-256color"
 # ───────────────────────────────
 export PATH="$HOME/.local/bin:$PATH"
 
+
+if [[ -n $TMUX ]]; then
+  export TERM="xterm-256color"
+fi
+export COLORTERM=truecolor
+
 # ───────────────────────────────
 # Oh My Zsh
 # ───────────────────────────────
