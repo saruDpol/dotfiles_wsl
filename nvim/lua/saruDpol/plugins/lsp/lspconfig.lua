@@ -136,7 +136,7 @@ return {
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"lua_ls",
-				"tsserver",
+				"ts_ls",
 				"pyright",
 				"html",
 				"cssls",
@@ -193,7 +193,7 @@ return {
 		})
 
 		-- TypeScript / JavaScript
-		lspconfig.tsserver.setup({
+		lspconfig.ts_ls.setup({
 			capabilities = capabilities,
 			root_dir = function(fname)
 				local files = vim.fs.find({ "package.json", "tsconfig.json", ".git" }, { path = fname, upward = true })
